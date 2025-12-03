@@ -434,20 +434,53 @@ footer { padding: 50px 0; background: #f5f5f7; border-top: 1px solid var(--borde
 
 @media (max-width: 1024px) { .tech-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) {
-  .hero h1 { font-size: 48px; }
-  .bento-grid { grid-template-columns: 1fr; }
-  .bento-full { grid-column: span 1; height: auto; padding: 60px 30px; }
-  .components-grid { grid-template-columns: 1fr; }
-  .tech-grid { grid-template-columns: repeat(2, 1fr); }
-  .nav-links { display: none; }
-  .mockup-stack-container { height: 350px; margin-top: 40px; }
-  .ipad-mockup { width: 85%; }
-  .contributors-list { grid-template-columns: 1fr; } 
+    /* (Pastikan kode media query lama Anda ada di sini juga) */
+
+    .hero h1 { font-size: 48px; }
+    .bento-grid { grid-template-columns: 1fr; }
+    .bento-full { grid-column: span 1; height: auto; padding: 60px 30px; }
+    .components-grid { grid-template-columns: 1fr; }
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; }
+    
+    /* >>> OPTIMASI MOCKUP MOBILE CRITICAL <<< */
+    .mockup-stack-container { 
+        height: 380px; /* Mengurangi tinggi wadah */ 
+        margin-top: 40px; 
+    }
+    .ipad-mockup { 
+        width: 95%; /* Membuat mockup lebih lebar untuk mengisi layar */ 
+    }
+    
+    /* Mengurangi offset Y dan skala untuk tampilan awal di Mobile */
+    .ipad-back {
+        transform: translateY(-40px) scale(0.9); /* Mengurangi pergeseran Y */
+    }
+    .ipad-middle {
+        transform: translateY(-20px) scale(0.95); /* Mengurangi pergeseran Y */
+    }
+    .ipad-front {
+        transform: translateY(0) scale(1);
+    }
+    
+    /* Menonaktifkan Hover Effect Pergeseran Ekstrim di Mobile untuk mencegah konten terpotong */
+    .mockup-stack-container:hover .ipad-back {
+        transform: translateY(-40px) scale(0.9); /* Kembali ke posisi awal */
+        opacity: 0.8; 
+    }
+    .mockup-stack-container:hover .ipad-middle {
+        transform: translateY(-20px) scale(0.95); /* Kembali ke posisi awal */
+        opacity: 0.8;
+    }
+    /* >>> AKHIR OPTIMASI MOCKUP MOBILE CRITICAL <<< */
+    
+    .contributors-list { grid-template-columns: 1fr; } 
 }
+
 @media (max-width: 480px) {
-  .tech-grid { grid-template-columns: 1fr; }
-  .team-grid { gap: 10px; }
-  .member-card { width: 45%; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .team-grid { gap: 10px; }
+    .member-card { width: 45%; }
 }
 
 .content-wrapper {
